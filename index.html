@@ -1,0 +1,1654 @@
+﻿<!-- index.html — полный рабочий файл. Сохрани как index.html и положи рядом logo.png -->
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth" data-lang="ru">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Тазша Бала | Семейный парк развлечений в Кокшетау</title>
+  <meta name="description"
+    content="Тазша Бала — мир ярких эмоций и веселья в Кокшетау. 4500 м² игровой площадки, аттракционы, батуты, лабиринты, дни рождения под ключ. График и цены уточняйте в WhatsApp." />
+  <meta name="robots" content="index,follow" />
+  <meta name="theme-color" content="#070b12" />
+  <meta name="format-detection" content="telephone=no" />
+
+  <!-- ✅ Canonical (обновляется из CONFIG.links.canonical) -->
+  <link rel="canonical" href="https://tazsha-bala.example/" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Тазша Бала — Мир ярких эмоций и веселья" />
+  <meta property="og:description"
+    content="Семейный парк развлечений в Кокшетау: 4500 м² игровой площадки, зоны, праздники. График и цены уточняйте в WhatsApp." />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Тазша Бала" />
+  <meta property="og:url" content="https://tazsha-bala.example/" />
+  <meta property="og:image"
+    content="https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?auto=format&fit=crop&q=80&w=1200" />
+  <meta property="og:locale" content="ru_RU" />
+  <meta property="og:locale:alternate" content="kk_KZ" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Тазша Бала — Мир ярких эмоций и веселья" />
+  <meta name="twitter:description"
+    content="Семейный парк развлечений в Кокшетау. График и цены уточняйте в WhatsApp." />
+  <meta name="twitter:image"
+    content="https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?auto=format&fit=crop&q=80&w=1200" />
+
+  <!-- Favicon -->
+  <link rel="icon"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8E%A1%3C/text%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- 3D Model Viewer -->
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+
+  <!-- ✅ Schema.org JSON-LD (динамически обновляется из CONFIG) -->
+  <script type="application/ld+json" id="schemaOrg">{}</script>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="antialiased selection:bg-green-500 selection:text-white">
+  <!-- ✅ skip link -->
+  <a href="#content"
+    class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-black/80 focus:text-white focus:px-4 focus:py-3 focus:rounded-xl"
+    data-i18n="skipToContent">
+    Пропустить к содержимому
+  </a>
+
+  <!-- фон -->
+  <div class="fixed inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    <div class="blob blob-4"></div>
+    <div class="blob blob-5"></div>
+  </div>
+
+  <!-- Кастомный курсор (только десктоп) -->
+  <div id="cursorDot" aria-hidden="true"></div>
+  <div id="cursorRing" aria-hidden="true"></div>
+  <script>
+    (function () {
+      // Только если устройство с точным указателем (мышь)
+      if (!window.matchMedia('(pointer: fine)').matches) return;
+
+      const dot = document.getElementById('cursorDot');
+      const ring = document.getElementById('cursorRing');
+      if (!dot || !ring) return;
+
+      let mx = window.innerWidth / 2, my = window.innerHeight / 2;
+      let rx = mx, ry = my;
+      const LERP = 0.12; // скорость следования ring (0..1)
+
+      // Мгновенно двигаем dot
+      document.addEventListener('mousemove', e => {
+        mx = e.clientX;
+        my = e.clientY;
+        dot.style.left = mx + 'px';
+        dot.style.top = my + 'px';
+      });
+
+      // Ring плавно догоняет через lerp
+      function tick() {
+        rx += (mx - rx) * LERP;
+        ry += (my - ry) * LERP;
+        ring.style.left = rx + 'px';
+        ring.style.top = ry + 'px';
+        requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+
+      // Hover на кликабельных элементах
+      const HOVER_SEL = 'a, button, [role="button"], input, textarea, select, label, summary, [tabindex]';
+      document.addEventListener('mouseover', e => {
+        if (e.target.closest(HOVER_SEL)) {
+          dot.classList.add('cursor-hover');
+          ring.classList.add('cursor-hover');
+        }
+      });
+      document.addEventListener('mouseout', e => {
+        if (e.target.closest(HOVER_SEL)) {
+          dot.classList.remove('cursor-hover');
+          ring.classList.remove('cursor-hover');
+        }
+      });
+
+      // Нажатие
+      document.addEventListener('mousedown', () => {
+        dot.classList.add('cursor-click');
+        ring.classList.add('cursor-click');
+      });
+      document.addEventListener('mouseup', () => {
+        dot.classList.remove('cursor-click');
+        ring.classList.remove('cursor-click');
+      });
+    })();
+  </script>
+
+  <!-- ✅ CONFIG + OVERRIDES + i18n -->
+
+  <!-- NAV -->
+  <header class="fixed top-0 inset-x-0 z-50 transition-all duration-300" id="navbar">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6">
+      <div class="mt-4 glass px-5 py-3 flex items-center justify-between bg-black/20 backdrop-blur-md border-white/10">
+        <a href="#hero" class="flex items-center gap-3 group" aria-label="Перейти к началу">
+          <div class="w-11 h-11 rounded-xl overflow-hidden border border-white/15 bg-white/5 grid place-items-center">
+            <span class="text-2xl">🎡</span>
+          </div>
+
+          <div class="leading-tight">
+            <div class="text-lg font-black tracking-tight text-white group-hover:text-green-400 transition-colors">
+              <span id="brandLogoText">TAZSHA</span> <span class="text-yellow-400">BALA</span>
+            </div>
+            <div class="text-[11px] font-bold tracking-widest uppercase text-white/55">
+              <span id="navCity"></span> • <span id="navOpenState" class="text-white/70"></span>
+            </div>
+          </div>
+        </a>
+
+        <nav class="hidden md:flex items-center gap-8 text-xs font-bold tracking-widest uppercase text-white/65"
+          aria-label="Навигация">
+          <a class="hover:text-white transition" href="#zones" data-i18n="navZones">Зоны</a>
+          <a class="hover:text-white transition" href="#prices" data-i18n="navPrices">Цены</a>
+          <a class="hover:text-white transition" href="#birthday" data-i18n="navBirthday">Праздники</a>
+          <a class="hover:text-white transition" href="#reviews" data-i18n="navReviews">Отзывы</a>
+          <a class="hover:text-white transition" href="#contacts" data-i18n="navContacts">Контакты</a>
+        </nav>
+
+        <div class="flex items-center gap-3">
+          <!-- Language toggle -->
+          <div class="hidden sm:flex items-center chip px-1 py-1" role="group" aria-label="Выбор языка">
+            <button id="langRu"
+              class="px-3 py-2 rounded-full text-xs font-black tracking-widest uppercase text-white/70 hover:text-white transition"
+              type="button">RU</button>
+            <button id="langKz"
+              class="px-3 py-2 rounded-full text-xs font-black tracking-widest uppercase text-white/70 hover:text-white transition"
+              type="button">KZ</button>
+          </div>
+
+          <a id="navWA" target="_blank" rel="noopener noreferrer"
+            class="hidden sm:inline-flex btn-primary rounded-xl px-4 py-2 text-xs font-black uppercase tracking-widest text-white items-center gap-2">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+            </svg>
+            <span data-i18n="ctaWhatsApp">WhatsApp</span>
+          </a>
+
+          <button id="menuBtn" class="md:hidden btn-secondary rounded-xl p-2.5 text-white/80 hover:text-white"
+            aria-label="Открыть меню" aria-expanded="false" aria-controls="mobileMenuPanel">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" aria-hidden="true">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- mobile menu -->
+      <div id="mobileMenu" class="absolute top-full left-0 right-0 mt-2 px-4 md:hidden">
+        <div id="mobileMenuPanel"
+          class="glass p-5 flex flex-col gap-4 text-center text-sm font-bold uppercase tracking-widest text-white/80 bg-[#0b1220]/95 backdrop-blur-xl">
+          <div class="flex justify-center gap-2 pb-1">
+            <button id="mLangRu" type="button"
+              class="btn-secondary rounded-xl px-4 py-2 text-xs font-black uppercase tracking-widest text-white/90">RU</button>
+            <button id="mLangKz" type="button"
+              class="btn-secondary rounded-xl px-4 py-2 text-xs font-black uppercase tracking-widest text-white/90">KZ</button>
+          </div>
+
+          <a href="#zones" class="py-2 border-b border-white/5" data-i18n="navZones">Зоны</a>
+          <a href="#gallery" class="py-2 border-b border-white/5" data-i18n="navGallery">Галерея</a>
+          <a href="#prices" class="py-2 border-b border-white/5" data-i18n="navPrices">Цены</a>
+          <a href="#rules" class="py-2 border-b border-white/5" data-i18n="navRules" data-role="navRules">Правила</a>
+          <a href="#birthday" class="py-2 border-b border-white/5" data-i18n="navBirthday">Праздники</a>
+          <a href="#reviews" class="py-2 border-b border-white/5" data-i18n="navReviews">Отзывы</a>
+          <a href="#faq" class="py-2 border-b border-white/5" data-i18n="navFaq" data-role="navFaq">FAQ</a>
+          <a href="#contacts" class="py-2" data-i18n="navContacts">Контакты</a>
+
+          <div class="grid grid-cols-2 gap-3 pt-2">
+            <a id="mWA" target="_blank" rel="noopener noreferrer"
+              class="btn-primary rounded-xl py-3 text-white flex items-center justify-center gap-2">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+              </svg>
+              <span data-i18n="ctaWhatsApp">WhatsApp</span>
+            </a>
+            <a id="mCall" class="btn-secondary rounded-xl py-3 text-white" data-i18n="ctaCall">Позвонить</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="content">
+    <!-- HERO -->
+    <section id="hero" class="relative pt-36 pb-20 lg:pt-48 lg:pb-28 overflow-hidden">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 relative z-10">
+        <div class="grid lg:grid-cols-[420px_1fr] gap-8 lg:gap-12 items-center">
+
+          <!-- LEFT: 3D Mascot -->
+          <div class="reveal mascot-wrap order-1 lg:order-none flex justify-center lg:sticky lg:top-32">
+            <div class="mascot-container">
+              <div class="mascot-glow"></div>
+              <model-viewer id="mascot3d" src="logo_optimized.glb" alt="Tazsha Bala mascot" auto-rotate
+                auto-rotate-delay="0" rotation-per-second="36deg" camera-controls disable-zoom interaction-prompt="none"
+                shadow-intensity="0.4" environment-image="neutral" loading="eager"
+                style="width:100%;height:340px;margin-top:-40px;"></model-viewer>
+              <div class="mascot-hint">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M15 15l-2 5L9 9l11 4-5 2z" />
+                </svg>
+                <span>drag to rotate</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- RIGHT: All content -->
+          <div class="order-2 lg:order-none">
+            <div class="reveal">
+              <div class="flex flex-wrap items-center gap-2 mb-6">
+                <span
+                  class="chip inline-flex items-center gap-2 px-4 py-2 text-[11px] font-bold uppercase tracking-widest text-white/85">
+                  <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                  <span id="heroCity"></span>
+                </span>
+                <span
+                  class="chip inline-flex items-center gap-2 px-4 py-2 text-[11px] font-bold uppercase tracking-widest text-white/85">
+                  <span id="heroAddr"></span>
+                </span>
+                <span
+                  class="chip inline-flex items-center gap-2 px-4 py-2 text-[11px] font-bold uppercase tracking-widest text-white/85">
+                  <span id="heroHours"></span>
+                  <span class="ml-2 text-[10px] font-semibold tracking-normal text-white/60" id="heroHoursNote"
+                    data-i18n="hoursNote">Graph changes - ask WhatsApp</span>
+                </span>
+              </div>
+
+              <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.05] text-white">
+                <span data-i18n="heroTitle1">Park, where</span>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500"
+                  data-i18n="heroTitle2">happiness</span>
+                <br><span data-i18n="heroTitle3">is endless</span>
+              </h1>
+
+              <p class="mt-6 text-lg text-white/70 leading-relaxed max-w-lg">
+                <span data-i18n="heroTextA">Huge space</span>
+                <span id="heroArea" class="text-white font-bold"></span>
+                <span data-i18n="heroTextB">of fun and games.</span>
+                <span class="block mt-2" data-i18n="heroTextC">Safe zones, food court and turnkey parties.</span>
+              </p>
+
+              <div class="mt-8 flex flex-col sm:flex-row gap-4">
+                <a href="#prices"
+                  class="btn-primary rounded-2xl px-8 py-4 text-sm font-black uppercase tracking-widest text-center text-white"
+                  data-i18n="ctaSeePrices">
+                  See prices
+                </a>
+                <a href="#form"
+                  class="btn-secondary rounded-2xl px-8 py-4 text-sm font-black uppercase tracking-widest text-center text-white"
+                  data-i18n="ctaBook">
+                  Book now
+                </a>
+              </div>
+
+              <div class="mt-7 flex flex-wrap gap-3 text-sm font-semibold text-white/65" id="benefitsRow"
+                aria-label="Benefits"></div>
+
+              <div class="mt-7 flex flex-wrap gap-3">
+                <a id="heroWA" target="_blank" rel="noopener noreferrer"
+                  class="btn-primary rounded-xl px-5 py-3 text-xs font-black uppercase tracking-widest text-white flex items-center justify-center gap-2">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                  </svg>
+                  <span data-i18n="ctaWhatsApp">WhatsApp</span></a> <a id="heroCall"
+                  class="btn-secondary rounded-xl px-5 py-3 text-xs font-black uppercase tracking-widest text-white"
+                  data-i18n="ctaCall">Call</a>
+                <a id="heroMap" target="_blank" rel="noopener noreferrer"
+                  class="btn-secondary rounded-xl px-5 py-3 text-xs font-black uppercase tracking-widest text-white"
+                  data-i18n="ctaRoute">Route</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- STAT BLOCKS — full width below mascot + text -->
+        <div class="reveal relative mt-12">
+          <div class="absolute -top-10 -right-10 w-32 h-32 bg-yellow-500/20 rounded-full blur-2xl"></div>
+
+          <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+            <div class="glass glow-border p-6 flex flex-col justify-between h-44 border border-white/10 cursor-default">
+              <span class="text-4xl" aria-hidden="true">🎢</span>
+              <div>
+                <div class="text-2xl font-black text-white" id="statArea"></div>
+                <div class="text-xs text-white/55 font-bold uppercase mt-1" data-i18n="statAreaLabel">area</div>
+              </div>
+            </div>
+
+            <div class="glass glow-border p-6 flex flex-col justify-between h-44 border border-white/10 cursor-default">
+              <span class="text-4xl" aria-hidden="true">&#x23F0;</span>
+              <div>
+                <div class="text-2xl font-black text-white" id="statHours"></div>
+                <div class="text-xs text-white/55 font-bold uppercase mt-1" data-i18n="statHoursLabel">schedule</div>
+              </div>
+            </div>
+
+            <div class="glass glow-border p-6 flex flex-col justify-between h-44 border border-white/10 cursor-default">
+              <div class="flex items-center justify-between">
+                <div>
+                  <div class="text-xl font-black text-white">🎉 <span data-i18n="birthdayTitleA">Birthday</span></div>
+                  <div class="text-sm text-white/65 mt-1" id="heroSlogan"></div>
+                </div>
+                <a href="#birthday"
+                  class="w-11 h-11 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors"
+                  aria-label="Go to parties">
+                  &#x27A1;
+                </a>
+              </div>
+            </div>
+
+            <div class="glass glow-border p-6 flex flex-col justify-center h-44 border border-white/10 cursor-default">
+              <div class="text-sm text-white/75 font-semibold">
+                <span data-i18n="statusLabel">Status:</span>
+                <span id="openBadge" class="font-black text-white text-lg block mt-1"></span>
+              </div>
+              <span class="text-xs text-white/55 font-bold uppercase tracking-widest mt-2"
+                data-i18n="statusBySchedule">by schedule</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+
+    <!-- ZONES -->
+    <section id="zones" class="py-20 relative">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6">
+        <div class="reveal text-center mb-12">
+          <h2 class="text-3xl sm:text-4xl font-black text-white">
+            <span data-i18n="zonesTitleA">Больше чем</span> <span class="text-green-500" data-i18n="zonesTitleB">просто
+              игры</span>
+          </h2>
+          <p class="mt-3 text-white/65" data-i18n="zonesHint">Кликни на карточку — откроется фото (лайтбокс)</p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="reveal glass glow-border p-2 group cursor-pointer zoneCard" data-zone="Лабиринты"
+            data-img="https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?auto=format&fit=crop&w=1400&q=80"
+            data-desc="Пример оформления. Реальные фото можно добавить в галерею." tabindex="0" role="button"
+            aria-label="Открыть фото: Лабиринты">
+            <div class="rounded-2xl overflow-hidden h-48 relative">
+              <img loading="lazy" decoding="async"
+                src="https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?auto=format&fit=crop&w=900&q=80"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                alt="Лабиринты" width="900" height="600" style="aspect-ratio: 3/2;">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/85 to-transparent"></div>
+              <div class="absolute bottom-4 left-4 font-black text-lg text-white">Лабиринты</div>
+              <div
+                class="absolute top-3 right-3 chip px-3 py-1 text-[10px] font-black uppercase tracking-widest text-white/90">
+                ТОП</div>
+            </div>
+            <div class="p-4 text-sm text-white/70">
+              Многоуровневые лабиринты — уточняйте детали в WhatsApp.
+            </div>
+          </div>
+
+          <div class="reveal glass glow-border p-2 group cursor-pointer zoneCard" data-zone="Батут-арена"
+            data-img="https://images.unsplash.com/photo-1572017726694-850e0513e9a4?auto=format&fit=crop&w=1400&q=80"
+            data-desc="Пример оформления. Реальные фото можно добавить в галерею." tabindex="0" role="button"
+            aria-label="Открыть фото: Батут-арена">
+            <div class="rounded-2xl overflow-hidden h-48 relative">
+              <img loading="lazy" decoding="async"
+                src="https://images.unsplash.com/photo-1572017726694-850e0513e9a4?auto=format&fit=crop&w=900&q=80"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                alt="Батут-арена" width="900" height="600" style="aspect-ratio: 3/2;">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/85 to-transparent"></div>
+              <div class="absolute bottom-4 left-4 font-black text-lg text-white">Батут-арена</div>
+            </div>
+            <div class="p-4 text-sm text-white/70">
+              Активная зона — уточняйте правила и возраст в WhatsApp.
+            </div>
+          </div>
+
+          <div class="reveal glass glow-border p-2 group cursor-pointer zoneCard" data-zone="Для малышей"
+            data-img="https://images.unsplash.com/photo-1628103649695-0370d70377a0?auto=format&fit=crop&w=1400&q=80"
+            data-desc="Пример оформления. Реальные фото можно добавить в галерею." tabindex="0" role="button"
+            aria-label="Открыть фото: Для малышей">
+            <div class="rounded-2xl overflow-hidden h-48 relative">
+              <img loading="lazy" decoding="async"
+                src="https://images.unsplash.com/photo-1628103649695-0370d70377a0?auto=format&fit=crop&w=900&q=80"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                alt="Зона для малышей" width="900" height="600" style="aspect-ratio: 3/2;">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/85 to-transparent"></div>
+              <div class="absolute bottom-4 left-4 font-black text-lg text-white">Для малышей</div>
+            </div>
+            <div class="p-4 text-sm text-white/70">
+              Спокойная зона — уточняйте возрастные ограничения.
+            </div>
+          </div>
+
+          <div class="reveal glass glow-border p-2 group cursor-pointer zoneCard" data-zone="Фуд-корт"
+            data-img="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1400&q=80"
+            data-desc="Пример оформления. Реальные фото можно добавить в галерею." tabindex="0" role="button"
+            aria-label="Открыть фото: Фуд-корт">
+            <div class="rounded-2xl overflow-hidden h-48 relative">
+              <img loading="lazy" decoding="async"
+                src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=900&q=80"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                alt="Фуд-корт" width="900" height="600" style="aspect-ratio: 3/2;">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/85 to-transparent"></div>
+              <div class="absolute bottom-4 left-4 font-black text-lg text-white">Фуд-корт</div>
+            </div>
+            <div class="p-4 text-sm text-white/70">
+              Перекус после игр — меню и условия уточняйте на месте/в WhatsApp.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section id="gallery" class="py-20">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6">
+        <div class="reveal text-center mb-12">
+          <h2 class="text-3xl sm:text-4xl font-black text-white" data-i18n="galleryTitle">Галерея</h2>
+          <p class="mt-3 text-white/65" data-i18n="gallerySub">Фото можно заменить на реальные — через админку (список
+            URL).</p>
+        </div>
+
+        <div id="galleryGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+      </div>
+    </section>
+
+    <!-- PRICES -->
+    <section id="prices" class="py-20">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6">
+        <div class="reveal mb-10 flex items-end justify-between gap-6">
+          <div>
+            <h2 class="text-3xl sm:text-4xl font-black text-white" data-i18n="pricesTitle">Тарифы</h2>
+            <p class="mt-2 text-white/65 text-sm" data-i18n="pricesSub">Цены и детали уточняйте в WhatsApp — расскажем
+              актуально.</p>
+          </div>
+          <a href="#form"
+            class="hidden sm:inline-flex btn-primary rounded-xl px-5 py-3 text-xs font-black uppercase tracking-widest text-white"
+            data-i18n="ctaBook">
+            Забронировать
+          </a>
+        </div>
+
+        <div class="grid lg:grid-cols-3 gap-6">
+          <div class="reveal glass glow-border p-8 border border-white/10">
+            <div class="text-xs font-bold uppercase tracking-widest text-green-400 mb-4" data-i18n="priceLabelWeek">
+              Будни (Пн–Пт)</div>
+            <div class="flex items-baseline gap-2">
+              <span id="pWeekPrice" class="text-4xl font-black text-white"
+                data-i18n="priceValuePlaceholder">Уточняйте</span>
+              <span id="pWeekSuffix" class="text-white/60 text-sm" data-i18n="priceSuffixPlaceholder">в WhatsApp</span>
+            </div>
+            <ul class="mt-6 space-y-3 text-sm text-white/75">
+              <li class="flex gap-2"><span aria-hidden="true">✅</span> <span>Доступ к игровой зоне (условия
+                  уточняйте)</span></li>
+              <li class="flex gap-2"><span aria-hidden="true">✅</span> <span>Актуальные правила и возраст — в
+                  WhatsApp</span></li>
+            </ul>
+
+            <div class="mt-7 grid grid-cols-2 gap-3">
+              <a href="#form"
+                class="inline-flex w-full justify-center btn-secondary rounded-xl py-3 text-xs font-black uppercase tracking-widest text-white"
+                data-i18n="btnSendRequest">
+                Заявка
+              </a>
+              <button type="button"
+                class="inline-flex w-full justify-center btn-primary rounded-xl py-3 text-xs font-black uppercase tracking-widest text-white priceWA items-center gap-2"
+                data-tariff="Будни">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                </svg>
+                <span data-i18n="ctaWhatsApp">WhatsApp</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="reveal glass glow-border p-8 border border-white/10 relative overflow-hidden">
+            <div
+              class="absolute top-0 right-0 bg-yellow-500 text-black text-[10px] font-black px-3 py-1 uppercase rounded-bl-xl"
+              data-i18n="priceBadge">Актуально по запросу</div>
+            <div class="text-xs font-bold uppercase tracking-widest text-yellow-400 mb-4" data-i18n="priceLabelWeekend">
+              Выходные</div>
+            <div class="flex items-baseline gap-2">
+              <span id="pWeekendPrice" class="text-4xl font-black text-white"
+                data-i18n="priceValuePlaceholder">Уточняйте</span>
+              <span id="pWeekendSuffix" class="text-white/60 text-sm" data-i18n="priceSuffixPlaceholder">в
+                WhatsApp</span>
+            </div>
+            <ul class="mt-6 space-y-3 text-sm text-white/75">
+              <li class="flex gap-2"><span aria-hidden="true">✅</span> <span>Подходит для семейных выходных</span></li>
+              <li class="flex gap-2"><span aria-hidden="true">✅</span> <span>Нагрузка/условия — уточняйте заранее</span>
+              </li>
+            </ul>
+
+            <div class="mt-7 grid grid-cols-2 gap-3">
+              <a href="#form"
+                class="inline-flex w-full justify-center btn-secondary rounded-xl py-3 text-xs font-black uppercase tracking-widest text-white"
+                data-i18n="btnSendRequest">
+                Заявка
+              </a>
+              <button type="button"
+                class="inline-flex w-full justify-center btn-primary rounded-xl py-3 text-xs font-black uppercase tracking-widest text-white priceWA items-center gap-2"
+                data-tariff="Выходные">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                </svg>
+                <span data-i18n="ctaWhatsApp">WhatsApp</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="reveal glass glow-border p-8 border border-white/10">
+            <div class="text-xs font-bold uppercase tracking-widest text-red-400 mb-4" data-i18n="priceLabelUnlimited">
+              Безлимит</div>
+            <div class="flex items-baseline gap-2">
+              <span id="pUnlimitedPrice" class="text-4xl font-black text-white"
+                data-i18n="priceValuePlaceholder">Уточняйте</span>
+              <span id="pUnlimitedSuffix" class="text-white/60 text-sm" data-i18n="priceSuffixPlaceholder">в
+                WhatsApp</span>
+            </div>
+            <ul class="mt-6 space-y-3 text-sm text-white/75">
+              <li class="flex gap-2"><span aria-hidden="true">🔥</span> <span>Формат и ограничения — по запросу</span>
+              </li>
+              <li class="flex gap-2"><span aria-hidden="true">✅</span> <span>Выгодно для долгих визитов</span></li>
+            </ul>
+
+            <div class="mt-7 grid grid-cols-2 gap-3">
+              <a href="#form"
+                class="inline-flex w-full justify-center btn-secondary rounded-xl py-3 text-xs font-black uppercase tracking-widest text-white"
+                data-i18n="btnSendRequest">
+                Заявка
+              </a>
+              <button type="button"
+                class="inline-flex w-full justify-center btn-primary rounded-xl py-3 text-xs font-black uppercase tracking-widest text-white priceWA items-center gap-2"
+                data-tariff="Безлимит">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                </svg>
+                <span data-i18n="ctaWhatsApp">WhatsApp</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-5 text-center text-xs text-white/45 reveal">
+          * <span>Актуальный прайс уточняйте у администратора в WhatsApp.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- RULES & SAFETY -->
+    <section id="rules" class="py-20">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6">
+        <div class="reveal glass glow-border p-10 border border-white/10 relative overflow-hidden">
+          <div class="absolute -top-24 -right-24 w-80 h-80 bg-green-500/10 rounded-full blur-3xl"></div>
+
+          <div class="flex flex-col lg:flex-row items-start justify-between gap-8 relative z-10">
+            <div class="max-w-2xl">
+              <h2 class="text-3xl sm:text-4xl font-black text-white" data-i18n="rulesTitle">Правила и безопасность</h2>
+              <p class="mt-3 text-white/70" data-i18n="rulesSub">Коротко и по делу — чтобы всем было комфортно и
+                безопасно.</p>
+
+              <ul class="mt-6 space-y-3 text-sm text-white/80">
+                <li class="flex gap-2"><span aria-hidden="true">🛡️</span> <span>Соблюдайте рекомендации персонала и
+                    правила зоны.</span></li>
+                <li class="flex gap-2"><span aria-hidden="true">👨‍👩‍👧‍👦</span> <span>Детей просим быть под
+                    присмотром взрослых (особенно малышей).</span></li>
+                <li class="flex gap-2"><span aria-hidden="true">🧦</span> <span>Для активных зон удобнее носки/сменная
+                    обувь — уточняйте на месте.</span></li>
+                <li class="flex gap-2"><span aria-hidden="true">🚫</span> <span>Просим бережно относиться к оборудованию
+                    и имуществу парка.</span></li>
+                <li class="flex gap-2"><span aria-hidden="true">🥤</span> <span>Еду и напитки лучше не приносить — на
+                    территории есть фуд-корт.</span></li>
+                <li class="flex gap-2"><span aria-hidden="true">⏱️</span> <span>Возрастные/ростовые ограничения могут
+                    отличаться по зонам — уточняйте.</span></li>
+                <li class="flex gap-2"><span aria-hidden="true">📸</span> <span>Фото/видео приветствуются, если не
+                    мешают другим гостям.</span></li>
+              </ul>
+
+              <div class="mt-7 flex flex-col sm:flex-row gap-3">
+                <a id="rulesWA" target="_blank" rel="noopener noreferrer"
+                  class="btn-primary rounded-xl px-6 py-4 text-xs font-black uppercase tracking-widest text-white text-center flex items-center justify-center gap-2">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                  </svg>
+                  <span data-i18n="rulesBtn">Уточнить правила в WhatsApp</span>
+                </a>
+                <a href="#form"
+                  class="btn-secondary rounded-xl px-6 py-4 text-xs font-black uppercase tracking-widest text-white text-center"
+                  data-i18n="birthdayBtn">
+                  Оставить заявку
+                </a>
+              </div>
+            </div>
+
+            <div class="w-full lg:max-w-sm">
+              <div class="glass p-6 border border-white/10">
+                <div class="text-xs font-bold uppercase tracking-widest text-white/60 mb-2">ℹ️</div>
+                <div class="text-lg font-black text-white" data-i18n="hoursNote">График может меняться — уточняйте в
+                  WhatsApp</div>
+                <p class="mt-2 text-sm text-white/70">
+                  <span>Адрес:</span> <span id="rulesAddr"></span>
+                </p>
+                <p class="mt-1 text-sm text-white/70">
+                  <span>Тел:</span> <span id="rulesPhone"></span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BIRTHDAY -->
+    <section id="birthday" class="py-20">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6">
+        <div class="reveal glass glow-border p-10 border border-white/10 relative overflow-hidden">
+          <div class="absolute -top-24 -right-24 w-80 h-80 bg-red-500/15 rounded-full blur-3xl"></div>
+          <div class="absolute -bottom-24 -left-24 w-80 h-80 bg-green-500/12 rounded-full blur-3xl"></div>
+
+          <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 relative z-10">
+            <div>
+              <h2 class="text-3xl sm:text-4xl font-black text-white">
+                🎉 <span data-i18n="birthdayTitleA">День рождения</span>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-yellow-400"
+                  data-i18n="birthdayTitleB">под ключ</span>
+              </h2>
+              <p id="bdayIntro" class="mt-3 text-white/70 max-w-2xl leading-relaxed">
+                Банкетная зона, аниматоры, шоу-программа и организация “под ключ”. Напишите — подберём вариант под ваш
+                запрос.
+              </p>
+
+              <div class="mt-6 flex flex-col sm:flex-row gap-3">
+                <a href="#form"
+                  class="btn-primary rounded-xl px-6 py-4 text-xs font-black uppercase tracking-widest text-white text-center"
+                  data-i18n="birthdayBtn">
+                  Оставить заявку
+                </a>
+                <a id="birthdayWA" target="_blank" rel="noopener noreferrer"
+                  class="btn-secondary rounded-xl px-6 py-4 text-xs font-black uppercase tracking-widest text-white text-center flex items-center justify-center gap-2">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                  </svg>
+                  <span data-i18n="ctaWhatsApp">WhatsApp</span>
+                </a>
+              </div>
+
+              <p class="mt-4 text-xs text-white/55">
+                * <span>Подробности и стоимость пакетов — уточняйте в WhatsApp.</span>
+              </p>
+            </div>
+
+            <div class="grid sm:grid-cols-3 gap-4 w-full lg:max-w-xl">
+              <div class="glass p-5 border border-white/10">
+                <div class="text-[10px] font-black uppercase tracking-widest text-white/60">Mini</div>
+                <div class="mt-2 text-lg font-black text-white">до 6 детей</div>
+                <div class="mt-1 text-white/70 text-sm">банкет + зона</div>
+              </div>
+              <div class="glass p-5 border border-white/10">
+                <div class="text-[10px] font-black uppercase tracking-widest text-white/60">Pro</div>
+                <div class="mt-2 text-lg font-black text-white">до 12 детей</div>
+                <div class="mt-1 text-white/70 text-sm">аниматор + опции</div>
+              </div>
+              <div class="glass p-5 border border-white/10">
+                <div class="text-[10px] font-black uppercase tracking-widest text-white/60">Max</div>
+                <div class="mt-2 text-lg font-black text-white">до 20 детей</div>
+                <div class="mt-1 text-white/70 text-sm">шоу + фото</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS COUNTERS -->
+    <section id="stats" class="py-20 relative overflow-hidden">
+      <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+        <div
+          class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[300px] bg-green-500/8 rounded-full blur-3xl">
+        </div>
+      </div>
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 relative z-10">
+        <div class="reveal text-center mb-12">
+          <div
+            class="inline-flex items-center gap-2 chip px-4 py-2 text-[11px] font-bold uppercase tracking-widest text-white/70 mb-4">
+            <span class="w-1.5 h-1.5 rounded-full bg-yellow-400 animate-pulse"></span>
+            Тазша Бала в цифрах
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-black text-white">
+            Нам <span
+              class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-yellow-400">доверяют</span> семьи
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-5">
+          <!-- Посетители -->
+          <div
+            class="reveal glass glow-border p-6 sm:p-8 border border-white/10 text-center group cursor-default stats-card">
+            <div class="text-4xl mb-3" aria-hidden="true">👨‍👩‍👧‍👦</div>
+            <div class="text-3xl sm:text-4xl font-black text-white leading-none">
+              <span class="stat-counter" data-target="5000" data-suffix="+">0</span>
+            </div>
+            <div class="mt-2 text-xs font-bold uppercase tracking-widest text-white/55">счастливых семей</div>
+            <div
+              class="mt-3 h-0.5 w-12 mx-auto bg-gradient-to-r from-green-500 to-transparent rounded-full group-hover:w-20 transition-all duration-500">
+            </div>
+          </div>
+
+          <!-- Праздники -->
+          <div
+            class="reveal glass glow-border p-6 sm:p-8 border border-white/10 text-center group cursor-default stats-card">
+            <div class="text-4xl mb-3" aria-hidden="true">🎉</div>
+            <div class="text-3xl sm:text-4xl font-black text-white leading-none">
+              <span class="stat-counter" data-target="500" data-suffix="+">0</span>
+            </div>
+            <div class="mt-2 text-xs font-bold uppercase tracking-widest text-white/55">праздников</div>
+            <div
+              class="mt-3 h-0.5 w-12 mx-auto bg-gradient-to-r from-yellow-400 to-transparent rounded-full group-hover:w-20 transition-all duration-500">
+            </div>
+          </div>
+
+          <!-- Рейтинг -->
+          <div
+            class="reveal glass glow-border p-6 sm:p-8 border border-white/10 text-center group cursor-default stats-card">
+            <div class="text-4xl mb-3" aria-hidden="true">⭐</div>
+            <div class="text-3xl sm:text-4xl font-black text-white leading-none flex items-end justify-center gap-1">
+              <span class="stat-counter" data-target="4.8" data-suffix="" data-decimal="true">0</span>
+              <span class="text-yellow-400 text-2xl font-black mb-0.5">/5</span>
+            </div>
+            <div class="mt-2 text-xs font-bold uppercase tracking-widest text-white/55">средний рейтинг</div>
+            <div class="mt-3 flex justify-center gap-0.5">
+              <span class="text-yellow-400 text-sm">★★★★★</span>
+            </div>
+          </div>
+
+          <!-- Площадь -->
+          <div
+            class="reveal glass glow-border p-6 sm:p-8 border border-white/10 text-center group cursor-default stats-card">
+            <div class="text-4xl mb-3" aria-hidden="true">🎢</div>
+            <div class="text-3xl sm:text-4xl font-black text-white leading-none">
+              <span class="stat-counter" data-target="4500" data-suffix="">0</span>
+              <span class="text-green-400 text-xl font-black">м²</span>
+            </div>
+            <div class="mt-2 text-xs font-bold uppercase tracking-widest text-white/55">игровой площадки</div>
+            <div
+              class="mt-3 h-0.5 w-12 mx-auto bg-gradient-to-r from-red-400 to-transparent rounded-full group-hover:w-20 transition-all duration-500">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section id="reviews" class="py-20">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6">
+        <div class="reveal text-center mb-12">
+          <h2 class="text-3xl sm:text-4xl font-black text-white">
+            <span data-i18n="reviewsTitleA">Отзывы</span> <span class="text-green-400"
+              data-i18n="reviewsTitleB">посетителей</span>
+          </h2>
+          <p class="mt-3 text-white/65">Реальные отзывы наших гостей с 2GIS.</p>
+
+          <div class="mt-5 flex flex-col sm:flex-row gap-3 justify-center">
+            <a id="reviews2gis" target="_blank" rel="noopener noreferrer"
+              class="btn-secondary rounded-xl px-6 py-3 text-xs font-black uppercase tracking-widest text-white"
+              data-i18n="reviews2gis">
+              Смотреть отзывы в 2GIS
+            </a>
+            <a id="reviewsYandex" target="_blank" rel="noopener noreferrer"
+              class="btn-secondary rounded-xl px-6 py-3 text-xs font-black uppercase tracking-widest text-white"
+              data-i18n="reviewsYandex">
+              Смотреть отзывы в Яндекс
+            </a>
+          </div>
+        </div>
+
+        <div class="grid lg:grid-cols-3 gap-6">
+          <!-- Отзыв 1 -->
+          <article class="reveal glass glow-border p-8 border border-white/10 flex flex-col">
+            <div class="flex items-center justify-between">
+              <div>
+                <div class="font-black text-white">aidanaa 🤍</div>
+                <div class="text-xs text-white/45 mt-0.5">18 января 2026</div>
+              </div>
+              <div class="text-yellow-300 text-sm" aria-label="Рейтинг 5 из 5">★★★★★</div>
+            </div>
+            <p class="mt-4 text-white/80 leading-relaxed flex-1">
+              Сегодня были в тазша бала. Понравился парк — очень просторный 👍. Кухня вкусная, домашняя еда и фастфуд
+              есть.
+            </p>
+            <a href="https://2gis.kz/kokshetau/branches/70000001087423473/firm/70000001087423474/69.384075%2C53.324034/tab/reviews"
+              target="_blank" rel="noopener noreferrer"
+              class="mt-5 inline-flex items-center gap-1.5 text-xs font-bold text-green-400 hover:text-green-300 transition-colors">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                <polyline points="15 3 21 3 21 9" />
+                <line x1="10" y1="14" x2="21" y2="3" />
+              </svg>
+              Читать на 2GIS
+            </a>
+          </article>
+
+          <!-- Отзыв 2 -->
+          <article class="reveal glass glow-border p-8 border border-white/10 flex flex-col">
+            <div class="flex items-center justify-between">
+              <div>
+                <div class="font-black text-white">Karina Ok</div>
+                <div class="text-xs text-white/45 mt-0.5">18 октября 2025</div>
+              </div>
+              <div class="text-yellow-300 text-sm" aria-label="Рейтинг 5 из 5">★★★★★</div>
+            </div>
+            <p class="mt-4 text-white/80 leading-relaxed flex-1">
+              Пицца просто потрясающая! Тесто мягкое, вкусное и ароматное, с хрустящей корочкой по краям. Начинка свежая
+              и щедрая — много сыра, вкусная колбаса. Всё приготовлено с любовью и доставлено горячим. Однозначно одна
+              из лучших пицц, которые я пробовала! Теперь буду заказывать только здесь 😋👏
+            </p>
+            <a href="https://2gis.kz/kokshetau/branches/70000001087423473/firm/70000001087423474/69.384075%2C53.324034/tab/reviews"
+              target="_blank" rel="noopener noreferrer"
+              class="mt-5 inline-flex items-center gap-1.5 text-xs font-bold text-green-400 hover:text-green-300 transition-colors">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                <polyline points="15 3 21 3 21 9" />
+                <line x1="10" y1="14" x2="21" y2="3" />
+              </svg>
+              Читать на 2GIS
+            </a>
+          </article>
+
+          <!-- Отзыв 3 -->
+          <article class="reveal glass glow-border p-8 border border-white/10 flex flex-col">
+            <div class="flex items-center justify-between">
+              <div>
+                <div class="font-black text-white">Ainagul K</div>
+                <div class="text-xs text-white/45 mt-0.5">5 октября 2025</div>
+              </div>
+              <div class="text-yellow-300 text-sm" aria-label="Рейтинг 4 из 5">★★★★☆</div>
+            </div>
+            <p class="mt-4 text-white/80 leading-relaxed flex-1">
+              4 окт. 2025 отмечали ДР сына в большом VIP. Дети остались довольны, наигрались в игровой, аниматор очень
+              классно проводил игры — дети были заинтересованы! Хорошая кухня, вежливый персонал! Мы уже 2-й год
+              проводим детский праздник здесь 🎉
+            </p>
+            <a href="https://2gis.kz/kokshetau/branches/70000001087423473/firm/70000001087423474/69.384075%2C53.324034/tab/reviews"
+              target="_blank" rel="noopener noreferrer"
+              class="mt-5 inline-flex items-center gap-1.5 text-xs font-bold text-green-400 hover:text-green-300 transition-colors">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                <polyline points="15 3 21 3 21 9" />
+                <line x1="10" y1="14" x2="21" y2="3" />
+              </svg>
+              Читать на 2GIS
+            </a>
+          </article>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="py-20">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6">
+        <div class="reveal text-center mb-12">
+          <h2 class="text-3xl sm:text-4xl font-black text-white" data-i18n="faqTitle">FAQ</h2>
+          <p class="mt-3 text-white/65" data-i18n="faqSub">Частые вопросы — если нужно, уточним в WhatsApp.</p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-6">
+          <details class="reveal faq-item glass p-6 border border-white/10 rounded-2xl">
+            <summary class="faq-summary cursor-pointer font-black text-white flex items-center justify-between gap-3">
+              Какой график работы?
+              <span class="faq-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9" />
+                </svg></span>
+            </summary>
+            <div class="faq-body">
+              <p class="mt-3 text-white/75 text-sm">По умолчанию: <span id="faqHours"></span>. <span
+                  id="faqHoursNote"></span></p>
+            </div>
+          </details>
+
+          <details class="reveal faq-item glass p-6 border border-white/10 rounded-2xl">
+            <summary class="faq-summary cursor-pointer font-black text-white flex items-center justify-between gap-3">
+              Как добраться?
+              <span class="faq-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9" />
+                </svg></span>
+            </summary>
+            <div class="faq-body">
+              <p class="mt-3 text-white/75 text-sm">Адрес: <span id="faqAddr"></span>. Нажмите "Маршрут" или откройте
+                карту внизу страницы.</p>
+            </div>
+          </details>
+
+          <details class="reveal faq-item glass p-6 border border-white/10 rounded-2xl">
+            <summary class="faq-summary cursor-pointer font-black text-white flex items-center justify-between gap-3">
+              Можно ли отметить день рождения?
+              <span class="faq-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9" />
+                </svg></span>
+            </summary>
+            <div class="faq-body">
+              <p class="mt-3 text-white/75 text-sm">Да, есть формат "под ключ". Дату/время и детали лучше согласовать
+                заранее в WhatsApp.</p>
+            </div>
+          </details>
+
+          <details class="reveal faq-item glass p-6 border border-white/10 rounded-2xl">
+            <summary class="faq-summary cursor-pointer font-black text-white flex items-center justify-between gap-3">
+              Сколько стоит вход?
+              <span class="faq-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9" />
+                </svg></span>
+            </summary>
+            <div class="faq-body">
+              <p class="mt-3 text-white/75 text-sm">Цены могут меняться. Актуальный прайс уточняйте в WhatsApp.</p>
+            </div>
+          </details>
+
+          <details class="reveal faq-item glass p-6 border border-white/10 rounded-2xl">
+            <summary class="faq-summary cursor-pointer font-black text-white flex items-center justify-between gap-3">С
+              какого возраста можно?
+              <span class="faq-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9" />
+                </svg></span>
+            </summary>
+            <div class="faq-body">
+              <p class="mt-3 text-white/75 text-sm">Зависит от зоны и правил. Уточняйте возраст/рост для конкретных зон
+                в WhatsApp.</p>
+            </div>
+          </details>
+
+          <details class="reveal faq-item glass p-6 border border-white/10 rounded-2xl">
+            <summary class="faq-summary cursor-pointer font-black text-white flex items-center justify-between gap-3">
+              Можно ли со своей едой?
+              <span class="faq-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9" />
+                </svg></span>
+            </summary>
+            <div class="faq-body">
+              <p class="mt-3 text-white/75 text-sm">Просим не приносить еду и напитки — на территории есть фуд-корт.
+                Детали уточняйте.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- PARTNERS -->
+    <section id="partners" class="py-20">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6">
+        <div class="reveal glass glow-border p-10 border border-white/10 relative overflow-hidden">
+          <div class="absolute -bottom-24 -right-24 w-80 h-80 bg-yellow-500/12 rounded-full blur-3xl"></div>
+
+          <div class="flex flex-col lg:flex-row items-start justify-between gap-8 relative z-10">
+            <div>
+              <h2 class="text-3xl sm:text-4xl font-black text-white" data-i18n="partnersTitle">Партнёрам /
+                сотрудничество</h2>
+              <p class="mt-3 text-white/70 max-w-2xl" id="partnersText" data-i18n="partnersSub">Мероприятия, группы,
+                корпоративы — обсудим формат.</p>
+              <div class="mt-6 flex flex-col sm:flex-row gap-3">
+                <a id="partnersWA" target="_blank" rel="noopener noreferrer"
+                  class="btn-primary rounded-xl px-6 py-4 text-xs font-black uppercase tracking-widest text-white text-center flex items-center justify-center gap-2">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                  </svg>
+                  <span data-i18n="partnersBtn">Написать по сотрудничеству</span>
+                </a>
+                <a href="#contacts"
+                  class="btn-secondary rounded-xl px-6 py-4 text-xs font-black uppercase tracking-widest text-white text-center"
+                  data-i18n="navContacts">
+                  Контакты
+                </a>
+              </div>
+              <p class="mt-4 text-xs text-white/55">
+                * <span>Если вы организуете группу/класс — напишите, подскажем время и условия.</span>
+              </p>
+            </div>
+
+            <div class="w-full lg:max-w-sm">
+              <div class="glass p-6 border border-white/10">
+                <div class="text-xs font-bold uppercase tracking-widest text-white/60 mb-2">📌</div>
+                <div class="text-lg font-black text-white">TAZSHA BALA</div>
+                <div class="mt-2 text-sm text-white/75" id="partnersSlogan"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FORM -->
+    <section id="form" class="py-20">
+      <div class="mx-auto max-w-4xl px-4 sm:px-6">
+        <div class="reveal glass glow-border p-8 sm:p-12 relative overflow-hidden border border-white/10">
+          <div
+            class="absolute top-0 right-0 w-72 h-72 bg-green-500/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2">
+          </div>
+
+          <div class="text-center mb-10 relative z-10">
+            <h2 class="text-3xl font-black text-white" data-i18n="formTitle">Забронировать / задать вопрос</h2>
+            <p class="mt-2 text-white/65" data-i18n="formSub">Мы ответим в WhatsApp максимально быстро</p>
+          </div>
+
+          <form id="leadForm" class="space-y-4 relative z-10" novalidate>
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-black uppercase text-white/60 mb-1 ml-1" for="fName"
+                  data-i18n="formName">Имя</label>
+                <input id="fName" type="text" required placeholder="Ваше имя"
+                  class="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-green-500 transition-colors">
+              </div>
+              <div>
+                <label class="block text-xs font-black uppercase text-white/60 mb-1 ml-1" for="fPhone"
+                  data-i18n="formPhone">Телефон</label>
+                <input id="fPhone" type="tel" required placeholder="+7 (7xx) xxx-xx-xx" inputmode="tel"
+                  autocomplete="tel"
+                  class="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-green-500 transition-colors">
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-black uppercase text-white/60 mb-1 ml-1" for="fTopic"
+                data-i18n="formTopic">Тип обращения</label>
+              <select id="fTopic"
+                class="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-green-500 transition-colors appearance-none cursor-pointer">
+                <option class="text-black">Хочу забронировать стол/праздник</option>
+                <option class="text-black">Узнать график/правила</option>
+                <option class="text-black">Другой вопрос</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-xs font-black uppercase text-white/60 mb-1 ml-1" for="fMsg"
+                data-i18n="formMsg">Комментарий (необязательно)</label>
+              <textarea id="fMsg" rows="3" placeholder="Дата, возраст, количество детей..."
+                class="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-green-500 transition-colors"></textarea>
+            </div>
+
+            <!-- consent -->
+            <div class="glass p-4 border border-white/10">
+              <label class="flex gap-3 items-start text-sm text-white/80">
+                <input id="fConsent" type="checkbox" class="mt-1 w-4 h-4 accent-green-500">
+                <span>
+                  <span class="font-semibold" data-i18n="formConsent">Согласен(на) на обработку данных для связи со
+                    мной</span>
+                  <span class="block text-xs text-white/60 mt-1" data-i18n="formConsentHint">Мы используем данные только
+                    чтобы ответить вам.</span>
+                </span>
+              </label>
+              <p id="privacyNote" class="mt-3 text-xs text-white/60"></p>
+            </div>
+
+            <button type="submit"
+              class="w-full btn-primary rounded-xl py-4 text-sm font-black uppercase tracking-widest text-white mt-2 flex items-center justify-center gap-3"
+              id="formSubmit">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+              </svg>
+              <span data-i18n="formBtn">Отправить в WhatsApp 🚀</span>
+            </button>
+
+            <p id="formFeedback" class="text-center text-red-400 text-sm hidden" data-i18n="formErr">Пожалуйста,
+              заполните имя и телефон.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="contacts" class="border-t border-white/5 bg-black/20 pt-16 pb-10">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6">
+        <div class="grid lg:grid-cols-3 gap-10">
+          <div class="reveal">
+            <div class="text-2xl font-black text-white mb-4">
+              <span id="footLogoText">TAZSHA</span> <span class="text-yellow-400">BALA</span>
+            </div>
+            <p class="text-white/70 text-sm leading-relaxed mb-3" id="footSlogan"></p>
+            <p class="text-white/60 text-sm leading-relaxed mb-6">
+              <span id="footAreaLine"></span>
+            </p>
+            <div class="flex gap-4">
+              <a id="footIG" target="_blank" rel="noopener noreferrer"
+                class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-gradient-to-tr hover:from-purple-500 hover:to-orange-500 transition-all p-2"
+                aria-label="Instagram">
+                <svg viewBox="0 0 24 24" fill="currentColor" class="w-full h-full">
+                  <path
+                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                </svg>
+              </a>
+
+              <a id="footWA" target="_blank" rel="noopener noreferrer"
+                class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-green-500 transition-all p-2.5"
+                aria-label="WhatsApp">
+                <svg viewBox="0 0 24 24" fill="currentColor" class="w-full h-full">
+                  <path
+                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                </svg>
+              </a>
+              <a id="footCall"
+                class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-blue-500 transition-all"
+                aria-label="Позвонить">📞</a>
+            </div>
+          </div>
+
+          <div class="reveal">
+            <h3 class="text-white font-bold text-lg mb-4" data-i18n="footContacts">Контакты</h3>
+            <ul class="space-y-4 text-sm text-white/75">
+              <li class="flex items-start gap-3">
+                <span class="text-green-400" aria-hidden="true">📍</span>
+                <span id="footAddr"></span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-yellow-400" aria-hidden="true">⏰</span>
+                <span>
+                  <span id="footHours"></span>
+                  <span class="block text-xs text-white/55 mt-1" id="footHoursNote"></span>
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-blue-400" aria-hidden="true">📞</span>
+                <a id="footPhone"
+                  class="hover:text-white transition-colors underline decoration-white/20 hover:decoration-white/60"></a>
+              </li>
+            </ul>
+
+            <div class="mt-6 flex flex-wrap gap-2">
+              <a id="contactsWA" target="_blank" rel="noopener noreferrer"
+                class="btn-primary rounded-xl px-5 py-3 text-xs font-black uppercase tracking-widest text-white flex items-center justify-center gap-2">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                </svg>
+                <span data-i18n="ctaWhatsApp">WhatsApp</span></a>
+              <a id="contactsMap" target="_blank" rel="noopener noreferrer"
+                class="btn-secondary rounded-xl px-5 py-3 text-xs font-black uppercase tracking-widest text-white"
+                data-i18n="ctaRoute">Маршрут</a>
+            </div>
+
+            <button id="adminOpen"
+              class="mt-6 btn-secondary rounded-xl px-5 py-3 text-xs font-black uppercase tracking-widest text-white/90"
+              data-i18n="adminForOrg">
+              ⚙️ Для организаторов
+            </button>
+          </div>
+
+          <div class="reveal">
+            <div class="rounded-xl overflow-hidden h-48 border border-white/10 relative bg-white/5">
+              <iframe id="mapFrame" width="100%" height="100%" style="border:0;" allowfullscreen loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                src="https://yandex.ru/map-widget/v1/?ll=69.383761%2C53.324201&z=17&pt=69.383761%2C53.324201%2Cpm2rdm&text=%D0%A2%D0%B0%D0%B6%D1%88%D0%B0%20%D0%91%D0%B0%D0%BB%D0%B0%20%D0%9A%D0%BE%D0%BA%D1%88%D0%B5%D1%82%D0%B0%D1%83&org=80824936043"></iframe>
+
+              <a id="footMap" href="https://yandex.kz/maps/ru/org/tazsha/80824936043/?ll=69.383761%2C53.324201&z=17"
+                target="_blank" rel="noopener noreferrer"
+                class="absolute bottom-3 right-3 bg-white text-black text-xs font-black px-3 py-2 rounded-lg shadow-lg hover:bg-gray-100 transition-colors"
+                data-i18n="footMapOpen">
+                Открыть в картах
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+        <div
+          class="border-t border-white/5 mt-12 pt-8 text-center text-xs text-white/45 font-semibold uppercase tracking-widest">
+          © <span id="year"></span> <span id="schemaBrand"></span>. <span>Все права защищены.</span>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <!-- ✅ Sticky mobile CTA bar -->
+  <div id="mobileCtaBar">
+    <div class="glass border border-white/10 px-3 py-3 flex items-center justify-between gap-3 bg-black/20">
+      <div class="text-xs text-white/75 font-semibold">
+        <span id="ctaBarTitle"></span><br>
+        <span class="text-white/60" id="ctaBarSub"></span>
+      </div>
+      <a id="ctaBarWA" target="_blank" rel="noopener noreferrer"
+        class="btn-primary rounded-xl px-4 py-3 text-xs font-black uppercase tracking-widest text-white flex items-center justify-center gap-2">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+          <path
+            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+        </svg>
+        <span data-i18n="ctaWhatsApp">WhatsApp</span></a>
+    </div>
+  </div>
+
+  <!-- Floating WhatsApp -->
+  <a id="floatWA" target="_blank" rel="noopener noreferrer"
+    class="fixed bottom-5 right-5 btn-primary rounded-2xl px-5 py-4 text-xs font-black uppercase tracking-widest text-white shadow-lg z-50 flex items-center justify-center gap-2">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+      <path
+        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+    </svg>
+    <span data-i18n="ctaWhatsApp">WhatsApp</span>
+  </a>
+
+  <!-- Floating Admin -->
+  <button id="adminFab"
+    class="fixed bottom-5 left-5 btn-secondary rounded-2xl px-4 py-4 text-xs font-black uppercase tracking-widest text-white/90 shadow-lg z-50"
+    aria-label="Открыть админ-панель">
+    ⚙️
+  </button>
+
+  <!-- Back to top -->
+  <button id="toTop"
+    class="btn-secondary rounded-2xl px-4 py-3 text-xs font-black uppercase tracking-widest text-white shadow-lg">
+    ↑ <span data-i18n="toTopText">Наверх</span>
+  </button>
+
+  <!-- Toast -->
+  <div id="toast">
+    <div class="glass border border-white/10 px-4 py-3 text-sm font-semibold text-white/95">
+      <span id="toastMsg"></span>
+    </div>
+  </div>
+
+  <!-- Lightbox -->
+  <dialog id="lightbox" aria-label="Просмотр фото">
+    <div class="p-0">
+      <div class="relative">
+        <img id="lbImg" src="" alt="" class="w-full h-[360px] md:h-[520px] object-cover" width="1400" height="900"
+          style="aspect-ratio: 14/9;">
+        <button id="lbClose" class="absolute top-3 right-3 btn-secondary rounded-xl px-3 py-2 text-white font-black"
+          aria-label="Закрыть">✕</button>
+        <button id="lbPrev"
+          class="absolute top-1/2 -translate-y-1/2 left-3 btn-secondary rounded-xl px-3 py-2 text-white font-black"
+          aria-label="Предыдущее фото">‹</button>
+        <button id="lbNext"
+          class="absolute top-1/2 -translate-y-1/2 right-3 btn-secondary rounded-xl px-3 py-2 text-white font-black"
+          aria-label="Следующее фото">›</button>
+      </div>
+      <div class="p-5 md:p-6">
+        <div class="flex items-start justify-between gap-4">
+          <div>
+            <div id="lbTitle" class="text-xl md:text-2xl font-black text-white"></div>
+            <div id="lbDesc" class="mt-1 text-white/70"></div>
+          </div>
+          <button id="lbWA"
+            class="btn-primary rounded-xl px-5 py-3 text-xs font-black uppercase tracking-widest text-white flex items-center justify-center gap-2">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+            </svg>
+            <span data-i18n="ctaWhatsApp">WhatsApp</span>
+          </button>
+        </div>
+        <div class="mt-3 text-xs text-white/55">
+          <span data-i18n="lbHint">←/→ листать • Esc закрыть</span>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- ADMIN MODAL -->
+  <div id="adminBackdrop" class="admin-backdrop" aria-hidden="true">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 pt-24 pb-10">
+      <div class="glass border border-white/10 p-6 sm:p-8 bg-[#0b1220]/95">
+        <div class="flex items-start justify-between gap-4">
+          <div>
+            <div class="text-xl sm:text-2xl font-black text-white" data-i18n="adminTitle">Панель администратора</div>
+            <div class="text-sm text-white/70 mt-1" data-i18n="adminSub">Меняй данные — сохраняется в браузере
+              (localStorage)</div>
+            <div id="adminNotice" class="mt-3 text-xs text-white/70 glass px-4 py-3 border border-white/10"></div>
+          </div>
+          <button id="adminClose" class="btn-secondary rounded-xl px-3 py-2 text-white font-black"
+            aria-label="Закрыть панель">✕</button>
+        </div>
+
+        <div id="adminAuth" class="mt-6">
+          <div class="grid sm:grid-cols-2 gap-4 items-end">
+            <div>
+              <label class="block text-xs font-black uppercase text-white/60 mb-1 ml-1" for="pinInput">PIN (4–8
+                цифр)</label>
+              <input id="pinInput" type="password" inputmode="numeric" placeholder="••••"
+                class="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-green-500 transition-colors">
+            </div>
+            <button id="pinBtn"
+              class="btn-primary rounded-xl py-3 text-xs font-black uppercase tracking-widest text-white">
+              Войти / Установить PIN
+            </button>
+          </div>
+          <p id="pinHint" class="mt-3 text-sm text-white/70"></p>
+          <p id="pinError" class="mt-2 text-sm text-red-400 hidden" data-i18n="pinBad">Неверный PIN.</p>
+        </div>
+
+        <div id="adminPanel" class="mt-6 hidden">
+          <div class="flex flex-wrap gap-2">
+            <button data-tab="tabContacts"
+              class="adminTab btn-primary rounded-xl px-4 py-2 text-xs font-black uppercase tracking-widest text-white"
+              data-i18n="tabContacts">Контакты</button>
+            <button data-tab="tabSchedule"
+              class="adminTab btn-secondary rounded-xl px-4 py-2 text-xs font-black uppercase tracking-widest text-white"
+              data-i18n="tabSchedule">График</button>
+            <button data-tab="tabContent"
+              class="adminTab btn-secondary rounded-xl px-4 py-2 text-xs font-black uppercase tracking-widest text-white"
+              data-i18n="tabContent">Галерея/контент</button>
+          </div>
+
+          <!-- Contacts -->
+          <div id="tabContacts" class="mt-6">
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-black uppercase text-white/60 mb-1 ml-1">Город (RU)</label>
+                <input id="admCityRu"
+                  class="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-green-500" />
+              </div>
+              <div>
+                <label class="block text-xs font-black uppercase text-white/60 mb-1 ml-1">Город (KZ)</label>
+                <input id="admCityKz"
+                  class="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-green-500" />
+              </div>
+              <div class="sm:col-span-2">
+                <label class="block text-xs font-black uppercase text-white/60 mb-1 ml-1">Адрес (RU)</label>
+                <input id="admAddrRu"
+                  class="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-green-500" />
+              </div>
+              <div class="sm:col-span-2">
+                <label class="block text-xs font-black uppercase text-white/60 mb-1 ml-1">Адрес (KZ)</label>
+                <input id="admAddrKz"
+                  class="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-green-500" />
+              </div>
+
+              <div>
+                <label class="block text-xs font-black uppercase text-white/60 mb-1 ml-1">Instagram (логин)</label>
+                <input id="admInstagram"
+                  class="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-green-500" />
+              </div>
+
+              <div>
+                <label class="block text-xs font-black uppercase text-white/60 mb-1 ml-1">WhatsApp (цифры)</label>
+                <input id="admWhatsapp"
+                  class="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-green-500" />
+              </div>
+
+              <div>
+                <label class="block text-xs font-black uppercase text-white/60 mb-1 ml-1">Телефон (красиво)</label>
+                <input id="admPhoneDisplay"
+                  class="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-green-500" />
+              </div>
+              <div>
+                <label class="block text-xs font-black uppercase text-white/60 mb-1 ml-1">Телефон (tel)</label>
+                <input id="admPhoneTel"
+                  class="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-green-500" />
+              </div>
+
+              <div class="sm:col-span-2">
+                <label class="block text-xs font-black uppercase text-white/60 mb-1 ml-1">Карта (поиск / query)</label>
+                <input id="admMapQuery"
+                  class="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-green-500" />
+              </div>
+
+              <div class="sm:col-span-2">
+                <label class="block text-xs font-black uppercase text-white/60 mb-1 ml-1">Canonical (URL сайта)</label>
+                <input id="admCanonical"
+                  class="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-green-500" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Schedule -->
+          <div id="tabSchedule" class="mt-6 hidden">
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-black uppercase text-white/60 mb-1 ml-1">OPEN (например 11:00)</label>
+                <input id="admOpen"
+                  class="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-green-500" />
+              </div>
+              <div>
+                <label class="block text-xs font-black uppercase text-white/60 mb-1 ml-1">CLOSE (например 23:00)</label>
+                <input id="admClose"
+                  class="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-green-500" />
+              </div>
+              <div class="sm:col-span-2">
+                <label class="block text-xs font-black uppercase text-white/60 mb-1 ml-1">Timezone (IANA)</label>
+                <input id="admTimezone"
+                  class="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-green-500" />
+                <p class="mt-2 text-xs text-white/60">По умолчанию: Asia/Almaty (Кокшетау).</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Content -->
+          <div id="tabContent" class="mt-6 hidden">
+            <div class="grid gap-4">
+              <div>
+                <label class="block text-xs font-black uppercase text-white/60 mb-1 ml-1">Галерея: URL фото (по одному
+                  на строку)</label>
+                <textarea id="admGalleryUrls" rows="6"
+                  class="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-green-500"
+                  placeholder="https://..."></textarea>
+                <p class="mt-2 text-xs text-white/60">Если пусто — показываются красивые placeholder-плитки.</p>
+              </div>
+
+              <div>
+                <label class="block text-xs font-black uppercase text-white/60 mb-1 ml-1">Преимущества (RU / по одному
+                  на строку)</label>
+                <textarea id="admBenefitsRu" rows="3"
+                  class="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-green-500"
+                  placeholder="Без выходных&#10;Безопасно&#10;Фуд-корт"></textarea>
+
+                <label class="block text-xs font-black uppercase text-white/60 mb-1 ml-1 mt-3">Преимущества (KZ / по
+                  одному на строку)</label>
+                <textarea id="admBenefitsKz" rows="3"
+                  class="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-green-500"
+                  placeholder="Демалыссыз&#10;Қауіпсіз&#10;Фуд-корт"></textarea>
+              </div>
+
+              <div class="glass p-4 border border-white/10">
+                <label class="flex gap-3 items-center text-sm text-white/80">
+                  <input id="admShowRules" type="checkbox" class="w-4 h-4 accent-green-500">
+                  <span>Показывать секцию “Правила”</span>
+                </label>
+                <label class="flex gap-3 items-center text-sm text-white/80 mt-3">
+                  <input id="admShowFaq" type="checkbox" class="w-4 h-4 accent-green-500">
+                  <span>Показывать секцию “FAQ”</span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-7 flex flex-col sm:flex-row gap-3">
+            <button id="adminSave"
+              class="btn-primary rounded-xl px-6 py-3 text-xs font-black uppercase tracking-widest text-white"
+              data-i18n="saveBtn">
+              Сохранить изменения
+            </button>
+            <button id="adminReset"
+              class="btn-secondary rounded-xl px-6 py-3 text-xs font-black uppercase tracking-widest text-white"
+              data-i18n="resetBtn">
+              Сбросить (очистить)
+            </button>
+            <button id="adminChangePin"
+              class="btn-secondary rounded-xl px-6 py-3 text-xs font-black uppercase tracking-widest text-white"
+              data-i18n="changePinBtn">
+              Сменить PIN
+            </button>
+          </div>
+
+          <div class="mt-3 flex flex-col sm:flex-row gap-3">
+            <button id="adminExport"
+              class="btn-secondary rounded-xl px-6 py-3 text-xs font-black uppercase tracking-widest text-white"
+              data-i18n="exportBtn">
+              Экспорт JSON
+            </button>
+            <button id="adminImport"
+              class="btn-secondary rounded-xl px-6 py-3 text-xs font-black uppercase tracking-widest text-white"
+              data-i18n="importBtn">
+              Импорт JSON
+            </button>
+            <input id="adminImportFile" type="file" accept="application/json" class="hidden">
+          </div>
+
+          <p id="adminSaved" class="mt-3 text-sm text-green-400 hidden">Сохранено ✅</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // FAQ smooth open & close animation
+    document.querySelectorAll('.faq-item').forEach(details => {
+      const summary = details.querySelector('.faq-summary');
+      const body = details.querySelector('.faq-body');
+      if (!summary || !body) return;
+
+      // Обязательно: overflow hidden чтобы max-height анимация работала
+      body.style.overflow = 'hidden';
+
+      let isAnimating = false;
+
+      summary.addEventListener('click', function (e) {
+        e.preventDefault();
+        if (isAnimating) return;
+        isAnimating = true;
+
+        if (!details.open) {
+          // --- OPEN ---
+          // Сначала открываем details чтобы браузер отрисовал содержимое
+          details.setAttribute('open', '');
+          // Сбрасываем стили чтобы получить реальную высоту
+          body.style.maxHeight = 'none';
+          body.style.opacity = '0';
+          body.style.transition = 'none';
+
+          // Читаем высоту ПОСЛЕ того как браузер отрисовал layout
+          requestAnimationFrame(() => {
+            const targetH = body.scrollHeight + 'px';
+            // Устанавливаем начальное состояние для анимации
+            body.style.maxHeight = '0';
+            requestAnimationFrame(() => {
+              body.style.transition = 'max-height .42s cubic-bezier(.4,0,.2,1), opacity .35s ease';
+              body.style.maxHeight = targetH;
+              body.style.opacity = '1';
+            });
+          });
+
+          setTimeout(() => {
+            body.style.maxHeight = 'none';
+            body.style.transition = '';
+            isAnimating = false;
+          }, 460);
+
+        } else {
+          // --- CLOSE ---
+          // Фиксируем текущую высоту перед анимацией закрытия
+          body.style.maxHeight = body.scrollHeight + 'px';
+          body.style.opacity = '1';
+          body.style.transition = 'none';
+
+          requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+              body.style.transition = 'max-height .4s cubic-bezier(.4,0,.2,1), opacity .32s ease';
+              body.style.maxHeight = '0';
+              body.style.opacity = '0';
+            });
+          });
+
+          setTimeout(() => {
+            details.removeAttribute('open');
+            body.style.maxHeight = '';
+            body.style.opacity = '';
+            body.style.transition = '';
+            isAnimating = false;
+          }, 420);
+        }
+      });
+    });
+  </script>
+
+
+  <script src="index.js" defer></script>
+
+  <!-- Stats counter animation -->
+  <script>
+    (function () {
+      function easeOutQuart(t) { return 1 - Math.pow(1 - t, 4); }
+
+      function animateCounter(el) {
+        const target = parseFloat(el.dataset.target);
+        const suffix = el.dataset.suffix || '';
+        const isDecimal = el.dataset.decimal === 'true';
+        const duration = 1800;
+        const start = performance.now();
+
+        function step(now) {
+          const elapsed = now - start;
+          const progress = Math.min(elapsed / duration, 1);
+          const eased = easeOutQuart(progress);
+          const current = target * eased;
+
+          if (isDecimal) {
+            el.textContent = current.toFixed(1) + suffix;
+          } else {
+            el.textContent = Math.floor(current).toLocaleString('ru-RU') + suffix;
+          }
+
+          if (progress < 1) requestAnimationFrame(step);
+          else {
+            el.textContent = isDecimal
+              ? target.toFixed(1) + suffix
+              : target.toLocaleString('ru-RU') + suffix;
+          }
+        }
+        requestAnimationFrame(step);
+      }
+
+      const counters = document.querySelectorAll('.stat-counter');
+      if (!counters.length) return;
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !entry.target.dataset.animated) {
+            entry.target.dataset.animated = '1';
+            animateCounter(entry.target);
+          }
+        });
+      }, { threshold: 0.4 });
+
+      counters.forEach(c => observer.observe(c));
+    })();
+  </script>
+
+
+</body>
+
+</html>
