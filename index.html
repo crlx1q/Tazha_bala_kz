@@ -1203,11 +1203,6 @@
                 data-i18n="ctaRoute">Маршрут</a>
             </div>
 
-            <button id="adminOpen"
-              class="mt-6 btn-secondary rounded-xl px-5 py-3 text-xs font-black uppercase tracking-widest text-white/90"
-              data-i18n="adminForOrg">
-              ⚙️ Для организаторов
-            </button>
           </div>
 
           <div class="reveal">
@@ -1227,9 +1222,9 @@
 
         </div>
 
-        <div
-          class="border-t border-white/5 mt-12 pt-8 text-center text-xs text-white/45 font-semibold uppercase tracking-widest">
-          © <span id="year"></span> <span id="schemaBrand"></span>. <span>Все права защищены.</span>
+        <div class="border-t border-white/5 mt-12 pt-8 text-center">
+          <p class="mt-2 text-white/20 text-xs tracking-widest uppercase">© <span id="year"></span> <span id="schemaBrand"></span>. Все права защищены.</p>
+          <p class="mt-2 text-white/20 text-xs tracking-widest">created by <a href="https://github.com/crlx1q/" target="_blank" rel="noopener noreferrer" class="text-white/40 hover:text-white/70 transition-colors">crlx1q</a></p>
         </div>
       </div>
     </footer>
@@ -1261,13 +1256,6 @@
     </svg>
     <span data-i18n="ctaWhatsApp">WhatsApp</span>
   </a>
-
-  <!-- Floating Admin -->
-  <button id="adminFab"
-    class="fixed bottom-5 left-5 btn-secondary rounded-2xl px-4 py-4 text-xs font-black uppercase tracking-widest text-white/90 shadow-lg z-50"
-    aria-label="Открыть админ-панель">
-    ⚙️
-  </button>
 
   <!-- Back to top -->
   <button id="toTop"
@@ -1318,211 +1306,6 @@
       </div>
     </div>
   </dialog>
-
-  <!-- ADMIN MODAL -->
-  <div id="adminBackdrop" class="admin-backdrop" aria-hidden="true">
-    <div class="mx-auto max-w-3xl px-4 sm:px-6 pt-24 pb-10">
-      <div class="glass border border-white/10 p-6 sm:p-8 bg-[#0b1220]/95">
-        <div class="flex items-start justify-between gap-4">
-          <div>
-            <div class="text-xl sm:text-2xl font-black text-white" data-i18n="adminTitle">Панель администратора</div>
-            <div class="text-sm text-white/70 mt-1" data-i18n="adminSub">Меняй данные — сохраняется в браузере
-              (localStorage)</div>
-            <div id="adminNotice" class="mt-3 text-xs text-white/70 glass px-4 py-3 border border-white/10"></div>
-          </div>
-          <button id="adminClose" class="btn-secondary rounded-xl px-3 py-2 text-white font-black"
-            aria-label="Закрыть панель">✕</button>
-        </div>
-
-        <div id="adminAuth" class="mt-6">
-          <div class="grid sm:grid-cols-2 gap-4 items-end">
-            <div>
-              <label class="block text-xs font-black uppercase text-white/60 mb-1 ml-1" for="pinInput">PIN (4–8
-                цифр)</label>
-              <input id="pinInput" type="password" inputmode="numeric" placeholder="••••"
-                class="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-green-500 transition-colors">
-            </div>
-            <button id="pinBtn"
-              class="btn-primary rounded-xl py-3 text-xs font-black uppercase tracking-widest text-white">
-              Войти / Установить PIN
-            </button>
-          </div>
-          <p id="pinHint" class="mt-3 text-sm text-white/70"></p>
-          <p id="pinError" class="mt-2 text-sm text-red-400 hidden" data-i18n="pinBad">Неверный PIN.</p>
-        </div>
-
-        <div id="adminPanel" class="mt-6 hidden">
-          <div class="flex flex-wrap gap-2">
-            <button data-tab="tabContacts"
-              class="adminTab btn-primary rounded-xl px-4 py-2 text-xs font-black uppercase tracking-widest text-white"
-              data-i18n="tabContacts">Контакты</button>
-            <button data-tab="tabSchedule"
-              class="adminTab btn-secondary rounded-xl px-4 py-2 text-xs font-black uppercase tracking-widest text-white"
-              data-i18n="tabSchedule">График</button>
-            <button data-tab="tabContent"
-              class="adminTab btn-secondary rounded-xl px-4 py-2 text-xs font-black uppercase tracking-widest text-white"
-              data-i18n="tabContent">Галерея/контент</button>
-          </div>
-
-          <!-- Contacts -->
-          <div id="tabContacts" class="mt-6">
-            <div class="grid sm:grid-cols-2 gap-4">
-              <div>
-                <label class="block text-xs font-black uppercase text-white/60 mb-1 ml-1">Город (RU)</label>
-                <input id="admCityRu"
-                  class="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-green-500" />
-              </div>
-              <div>
-                <label class="block text-xs font-black uppercase text-white/60 mb-1 ml-1">Город (KZ)</label>
-                <input id="admCityKz"
-                  class="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-green-500" />
-              </div>
-              <div class="sm:col-span-2">
-                <label class="block text-xs font-black uppercase text-white/60 mb-1 ml-1">Адрес (RU)</label>
-                <input id="admAddrRu"
-                  class="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-green-500" />
-              </div>
-              <div class="sm:col-span-2">
-                <label class="block text-xs font-black uppercase text-white/60 mb-1 ml-1">Адрес (KZ)</label>
-                <input id="admAddrKz"
-                  class="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-green-500" />
-              </div>
-
-              <div>
-                <label class="block text-xs font-black uppercase text-white/60 mb-1 ml-1">Instagram (логин)</label>
-                <input id="admInstagram"
-                  class="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-green-500" />
-              </div>
-
-              <div>
-                <label class="block text-xs font-black uppercase text-white/60 mb-1 ml-1">WhatsApp (цифры)</label>
-                <input id="admWhatsapp"
-                  class="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-green-500" />
-              </div>
-
-              <div>
-                <label class="block text-xs font-black uppercase text-white/60 mb-1 ml-1">Телефон (красиво)</label>
-                <input id="admPhoneDisplay"
-                  class="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-green-500" />
-              </div>
-              <div>
-                <label class="block text-xs font-black uppercase text-white/60 mb-1 ml-1">Телефон (tel)</label>
-                <input id="admPhoneTel"
-                  class="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-green-500" />
-              </div>
-
-              <div class="sm:col-span-2">
-                <label class="block text-xs font-black uppercase text-white/60 mb-1 ml-1">Карта (поиск / query)</label>
-                <input id="admMapQuery"
-                  class="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-green-500" />
-              </div>
-
-              <div class="sm:col-span-2">
-                <label class="block text-xs font-black uppercase text-white/60 mb-1 ml-1">Canonical (URL сайта)</label>
-                <input id="admCanonical"
-                  class="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-green-500" />
-              </div>
-            </div>
-          </div>
-
-          <!-- Schedule -->
-          <div id="tabSchedule" class="mt-6 hidden">
-            <div class="grid sm:grid-cols-2 gap-4">
-              <div>
-                <label class="block text-xs font-black uppercase text-white/60 mb-1 ml-1">OPEN (например 11:00)</label>
-                <input id="admOpen"
-                  class="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-green-500" />
-              </div>
-              <div>
-                <label class="block text-xs font-black uppercase text-white/60 mb-1 ml-1">CLOSE (например 23:00)</label>
-                <input id="admClose"
-                  class="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-green-500" />
-              </div>
-              <div class="sm:col-span-2">
-                <label class="block text-xs font-black uppercase text-white/60 mb-1 ml-1">Timezone (IANA)</label>
-                <input id="admTimezone"
-                  class="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-green-500" />
-                <p class="mt-2 text-xs text-white/60">По умолчанию: Asia/Almaty (Кокшетау).</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Content -->
-          <div id="tabContent" class="mt-6 hidden">
-            <div class="grid gap-4">
-              <div>
-                <label class="block text-xs font-black uppercase text-white/60 mb-1 ml-1">Галерея: URL фото (по одному
-                  на строку)</label>
-                <textarea id="admGalleryUrls" rows="6"
-                  class="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-green-500"
-                  placeholder="https://..."></textarea>
-                <p class="mt-2 text-xs text-white/60">Если пусто — показываются красивые placeholder-плитки.</p>
-              </div>
-
-              <div>
-                <label class="block text-xs font-black uppercase text-white/60 mb-1 ml-1">Преимущества (RU / по одному
-                  на строку)</label>
-                <textarea id="admBenefitsRu" rows="3"
-                  class="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-green-500"
-                  placeholder="Без выходных&#10;Безопасно&#10;Фуд-корт"></textarea>
-
-                <label class="block text-xs font-black uppercase text-white/60 mb-1 ml-1 mt-3">Преимущества (KZ / по
-                  одному на строку)</label>
-                <textarea id="admBenefitsKz" rows="3"
-                  class="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-green-500"
-                  placeholder="Демалыссыз&#10;Қауіпсіз&#10;Фуд-корт"></textarea>
-              </div>
-
-              <div class="glass p-4 border border-white/10">
-                <label class="flex gap-3 items-center text-sm text-white/80">
-                  <input id="admShowRules" type="checkbox" class="w-4 h-4 accent-green-500">
-                  <span>Показывать секцию “Правила”</span>
-                </label>
-                <label class="flex gap-3 items-center text-sm text-white/80 mt-3">
-                  <input id="admShowFaq" type="checkbox" class="w-4 h-4 accent-green-500">
-                  <span>Показывать секцию “FAQ”</span>
-                </label>
-              </div>
-            </div>
-          </div>
-
-          <div class="mt-7 flex flex-col sm:flex-row gap-3">
-            <button id="adminSave"
-              class="btn-primary rounded-xl px-6 py-3 text-xs font-black uppercase tracking-widest text-white"
-              data-i18n="saveBtn">
-              Сохранить изменения
-            </button>
-            <button id="adminReset"
-              class="btn-secondary rounded-xl px-6 py-3 text-xs font-black uppercase tracking-widest text-white"
-              data-i18n="resetBtn">
-              Сбросить (очистить)
-            </button>
-            <button id="adminChangePin"
-              class="btn-secondary rounded-xl px-6 py-3 text-xs font-black uppercase tracking-widest text-white"
-              data-i18n="changePinBtn">
-              Сменить PIN
-            </button>
-          </div>
-
-          <div class="mt-3 flex flex-col sm:flex-row gap-3">
-            <button id="adminExport"
-              class="btn-secondary rounded-xl px-6 py-3 text-xs font-black uppercase tracking-widest text-white"
-              data-i18n="exportBtn">
-              Экспорт JSON
-            </button>
-            <button id="adminImport"
-              class="btn-secondary rounded-xl px-6 py-3 text-xs font-black uppercase tracking-widest text-white"
-              data-i18n="importBtn">
-              Импорт JSON
-            </button>
-            <input id="adminImportFile" type="file" accept="application/json" class="hidden">
-          </div>
-
-          <p id="adminSaved" class="mt-3 text-sm text-green-400 hidden">Сохранено ✅</p>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <script>
     // FAQ smooth open & close animation
