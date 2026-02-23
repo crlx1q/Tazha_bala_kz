@@ -56,7 +56,25 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 
-<body class="antialiased selection:bg-green-500 selection:text-white">
+<body class="antialiased selection:bg-green-500 selection:text-white preloading">
+  <!-- Site Loader -->
+  <div id="siteLoader" role="status" aria-live="polite" aria-label="Загрузка сайта">
+    <div class="site-loader-panel">
+      <div class="site-loader-logo-wrap" aria-hidden="true">
+        <div class="site-loader-logo">🎡</div>
+      </div>
+      <p class="site-loader-name">TAZSHA BALA</p>
+      <p class="site-loader-subname">Семейный парк развлечений</p>
+      <div class="site-loader-track" aria-hidden="true">
+        <div id="siteLoaderBar" class="site-loader-bar"></div>
+      </div>
+      <div class="site-loader-meta">
+        <span id="siteLoaderStatus">Инициализация...</span>
+        <strong id="siteLoaderPercent">0%</strong>
+      </div>
+    </div>
+  </div>
+
   <!-- ✅ skip link -->
   <a href="#content"
     class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-black/80 focus:text-white focus:px-4 focus:py-3 focus:rounded-xl"
@@ -1306,6 +1324,91 @@
       </div>
     </div>
   </dialog>
+
+  <script>
+    (function () {
+      const loader = document.getElementById('siteLoader');
+      const bar = document.getElementById('siteLoaderBar');
+      const percent = document.getElementById('siteLoaderPercent');
+      const status = document.getElementById('siteLoaderStatus');
+      const body = document.body;
+      if (!loader || !bar || !percent || !status || !body) return;
+
+      const labels = [
+        { max: 34, text: 'Инициализация...' },
+        { max: 78, text: 'Загружаем объекты...' },
+        { max: 101, text: 'Почти готово...' }
+      ];
+
+      let target = 8;
+      let current = 0;
+      let settled = false;
+      let rafId = 0;
+      const started = performance.now();
+
+      function updateLabel(value) {
+        const item = labels.find((label) => value < label.max) || labels[labels.length - 1];
+        status.textContent = item.text;
+      }
+
+      function draw() {
+        current += (target - current) * 0.12;
+        if (target === 100 && 100 - current < 0.2) current = 100;
+
+        const rounded = Math.floor(current);
+        bar.style.width = rounded + '%';
+        percent.textContent = rounded + '%';
+        updateLabel(rounded);
+
+        if (!settled || current < 100) {
+          rafId = requestAnimationFrame(draw);
+        }
+      }
+
+      function finishLoader() {
+        if (settled) return;
+        settled = true;
+        target = 100;
+
+        if (!rafId) rafId = requestAnimationFrame(draw);
+
+        const waitForFull = () => {
+          if (current < 99.5) {
+            requestAnimationFrame(waitForFull);
+            return;
+          }
+          body.classList.remove('preloading');
+          body.classList.add('is-loaded');
+          setTimeout(() => loader.remove(), 900);
+        };
+        requestAnimationFrame(waitForFull);
+      }
+
+      const ramp = setInterval(() => {
+        const elapsed = performance.now() - started;
+        const next = Math.min(92, 8 + (elapsed / 2600) * 84);
+        target = Math.max(target, next);
+        if (next >= 92) clearInterval(ramp);
+      }, 120);
+
+      requestAnimationFrame(draw);
+
+      if (document.readyState === 'complete') {
+        clearInterval(ramp);
+        finishLoader();
+      } else {
+        window.addEventListener('load', () => {
+          clearInterval(ramp);
+          finishLoader();
+        }, { once: true });
+      }
+
+      setTimeout(() => {
+        clearInterval(ramp);
+        finishLoader();
+      }, 12000);
+    })();
+  </script>
 
   <script>
     // FAQ smooth open & close animation
